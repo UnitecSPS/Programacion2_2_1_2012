@@ -4,6 +4,7 @@ build/
 nbbuild/
 dist/
 nbdist/
+patito/
 nbactions.xml
 nb-configuration.xml
 manifest.mf
