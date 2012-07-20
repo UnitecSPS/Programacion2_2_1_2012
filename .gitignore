@@ -1,3 +1,15 @@
+nbproject/
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+patito/
+nbactions.xml
+nb-configuration.xml
+manifest.mf
+buildm.xml
+
 *.class
 
 # Package Files #
