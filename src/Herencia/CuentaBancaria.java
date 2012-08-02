@@ -15,9 +15,11 @@ public class CuentaBancaria {
     protected String nombre;
     protected double saldo;
     protected Date fechaInicio;
+    public static int PAGO_MINIMO = 500;
     
-    public CuentaBancaria(int c){
+    public CuentaBancaria(int c, String n){
         codigo = c;
+        nombre = n;
     }
     
     public double tasaInteres(){
@@ -37,5 +39,9 @@ public class CuentaBancaria {
     public String toString() {
         String dato = codigo + "-" + nombre + " Lps." +saldo;
         return dato;
+    }
+    
+    public void patito(){
+        System.out.println("PATITO BANCARIO");
     }
   }

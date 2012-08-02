@@ -13,11 +13,16 @@ import java.util.ArrayList;
 public class CuentaCheques extends CuentaBancaria{
     
     private ArrayList<Integer> numeros;
+    private int numChequera;
     
+    public CuentaCheques(int c, String n,int nc){
+        super(c,n);
+        numChequera = nc;
+    }
+    
+    @Override
     public void patito(){
-        this.codigo = 1;
-        this.nombre = "Patito";
-        this.saldo = 300;
+        System.out.println("PATITO CHEQUE");
     }
     
 }
