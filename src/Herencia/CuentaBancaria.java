@@ -20,6 +20,8 @@ public class CuentaBancaria {
     public CuentaBancaria(int c, String n){
         codigo = c;
         nombre = n;
+        fechaInicio = new Date();
+        saldo = PAGO_MINIMO;
     }
     
     public double tasaInteres(){
@@ -30,9 +32,16 @@ public class CuentaBancaria {
         saldo += m;
     }
     
-    public void retiro(double m){
-        if( saldo > m )
+    public boolean retiro(double m){
+        if( saldo > m ){
             saldo -= m;
+            return true;
+        }
+        return false;
+    }
+    
+    public void registrarIntereses(){
+        saldo += saldo * tasaInteres();
     }
 
     @Override
