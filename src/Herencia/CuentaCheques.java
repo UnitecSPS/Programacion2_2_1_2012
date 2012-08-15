@@ -1,4 +1,4 @@
-/*
+  /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -10,7 +10,7 @@ import java.util.Scanner;
 /**
  *
  * @author Gotcha
- */
+ */ 
 public class CuentaCheques extends CuentaBancaria{
     
     private ArrayList<Cheque> cheques;

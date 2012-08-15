@@ -27,6 +27,7 @@ public class CuentaPlazoFija extends CuentaBancaria {
     }
     
     @Override
+    
     public void registrarIntereses(){
         Date now = new Date();
         if( now.before(fechaFin) )
@@ -42,6 +43,12 @@ public class CuentaPlazoFija extends CuentaBancaria {
         return false;
     }
     
+    /**
+     * Configurar <code>Fecha Final</code>
+     * @param year EL Anio
+     * @param mes El MEs
+     * @param dia El dia
+     */
     public void setFechaFin(int year,int mes,int dia){
         Calendar c = Calendar.getInstance();
         c.set(year, mes, dia);

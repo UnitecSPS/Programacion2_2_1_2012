@@ -42,6 +42,15 @@ public class Empleado {
         return "Empleado = " + "codigo=" + codigo + "nombre=" + nombre;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if( obj instanceof Empleado ){
+            if(((Empleado)obj).getCodigo() == this.getCodigo())
+                return true;
+        }
+        return false; 
+    }
+
     
 
 

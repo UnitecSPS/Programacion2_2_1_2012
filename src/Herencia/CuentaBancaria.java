@@ -5,6 +5,7 @@
 package Herencia;
 
 import java.util.Date;
+import java.util.Random;
 
 /**
  *
@@ -14,14 +15,29 @@ public class CuentaBancaria {
     protected int codigo;
     protected String nombre;
     protected double saldo;
-    protected Date fechaInicio;
-    public static int PAGO_MINIMO = 500;
+    protected final Date fechaInicio = new Date();
+    public static final int PAGO_MINIMO = 500;
     
     public CuentaBancaria(int c, String n){
         codigo = c;
         nombre = n;
-        fechaInicio = new Date();
         saldo = PAGO_MINIMO;
+    }
+
+    public final int getCodigo() {
+        return codigo;
+    }
+
+    public final Date getFechaInicio() {
+        return fechaInicio;
+    }
+
+    public final String getNombre() {
+        return nombre;
+    }
+
+    public final double getSaldo() {
+        return saldo;
     }
     
     public double tasaInteres(){

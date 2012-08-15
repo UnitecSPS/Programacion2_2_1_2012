@@ -12,10 +12,10 @@ import java.util.Date;
  * @author Gotcha
  */
 public class GotchaBank {
-    static ArrayList<CuentaBancaria> cuentas;
+    static iBanco banco;
     
     static{
-        cuentas = new ArrayList<CuentaBancaria>();
+        banco = new BancoArraylist();
     }
     
     public static void main(String args[]){
@@ -32,30 +32,21 @@ public class GotchaBank {
         TipoCuenta tipo = TipoCuenta.valueOf(tip);
         switch(tipo){
             case AHORRO:
-                cuentas.add( new CuentaBancaria(nc,n) );
+                banco.agregarCuenta( new CuentaBancaria(nc,n) );
                 break;
             case CHEQUE:
                 int nchequera=0;//ingresarlo de teclado
-                cuentas.add( new CuentaCheques(nc,n,nchequera));
+                banco.agregarCuenta( new CuentaCheques(nc,n,nchequera));
                 break;
             default:
-                cuentas.add( new CuentaPlazoFija(nc, n));
+                banco.agregarCuenta( new CuentaPlazoFija(nc, n));
         }
     }
     
     public static void configuarFechaFin(int nc,int y,int m,int d){
-        for(CuentaBancaria cb : cuentas){
-            if( cb.codigo == nc ){
-                
-                if(cb instanceof CuentaPlazoFija){
-                    //downcasting
-                    //in directo
-                    CuentaPlazoFija cf = (CuentaPlazoFija)cb;
-                    cf.setFechaFin(y, m, d);
-                    //directo
-                    ((CuentaPlazoFija)cb).setFechaFin(y, m, d);
-                }
-            }
-        }
+        if( banco.setFechaFin(nc, y, m, d) )
+            System.out.println("SE HIZO BIEN");
+        else
+            System.out.println("NO SE PUDO HACER");
     }
 }

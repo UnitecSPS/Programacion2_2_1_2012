@@ -14,9 +14,6 @@ import java.util.Calendar;
 public class AnimalKingdom {
     public static void main(String args[]){
         
-        Calendar c = Calendar.getInstance();
-        System.out.print(c.get(Calendar.MONTH));
-        
         ArrayList<Animal> animales = new ArrayList<Animal>();
         
         animales.add( new Perro("Canini Panini"));
@@ -26,5 +23,23 @@ public class AnimalKingdom {
         
         for(Animal ani : animales)
             ani.hablar();
+        
+        Animal ani = new Animal("Perico",2,false) {
+
+            public void fua(){
+                System.out.println("FUAA");
+            }
+            
+            @Override
+            public void hablar() {
+                System.out.println("WAKA WAKA");
+                this.fua();
+            }
+        };
+        ani.hablar();
+        
+        //Animal ani2 = new Animal("Sapo",4,false);
+        
+        
     }
 }

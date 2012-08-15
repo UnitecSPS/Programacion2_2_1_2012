@@ -4,6 +4,8 @@
  */
 package Herencia;
 
+import java.util.Calendar;
+
 /**
  *
  * @author Gotcha
@@ -17,6 +19,7 @@ public class Banco {
         
         cb.patito();
         cb2.patito();
+        
         
         //arreglosc
         CuentaBancaria cuentas[] = new CuentaBancaria[3];
