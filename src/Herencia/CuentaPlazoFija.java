@@ -59,4 +59,11 @@ public class CuentaPlazoFija extends CuentaBancaria {
     public void patito(){
         System.out.println("SOY PATITO FIJO");
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + " Intereses: " + interesGenerado;
+    }
+    
+    
 }

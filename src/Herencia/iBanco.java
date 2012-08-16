@@ -50,6 +50,9 @@ public interface iBanco extends Imprimible {
      */
     boolean setFechaFin(int codigo,int y,int m,int d);
     
-    
-    
+    /**
+     * Registra los intereses ganados para una cuenta
+     * @param codigo Codigo de la cuenta
+     */
+    void agregarIntereses(int codigo);
 }

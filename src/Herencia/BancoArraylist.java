@@ -82,5 +82,12 @@ public class BancoArraylist implements iBanco {
     public void exportar(String tipo) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
+
+    @Override
+    public void agregarIntereses(int codigo) {
+        CuentaBancaria  cb = getCuenta(codigo);
+        if( cb != null )
+            cb.registrarIntereses();
+    }
     
 }
