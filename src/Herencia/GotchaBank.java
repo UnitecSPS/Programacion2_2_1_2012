@@ -82,17 +82,25 @@ public class GotchaBank {
     }
     
     public static void addCuenta(int nc,String n,String tip){
-        TipoCuenta tipo = TipoCuenta.valueOf(tip);
-        switch(tipo){
-            case AHORRO:
-                banco.agregarCuenta( new CuentaBancaria(nc,n) );
-                break;
-            case CHEQUE:
-                int nchequera=0;//ingresarlo de teclado
-                banco.agregarCuenta( new CuentaCheques(nc,n,nchequera));
-                break;
-            default:
-                banco.agregarCuenta( new CuentaPlazoFija(nc, n));
+        try{
+            TipoCuenta tipo = TipoCuenta.valueOf(tip);
+            switch(tipo){
+                case AHORRO:
+                    banco.agregarCuenta( new CuentaBancaria(nc,n) );
+                    break;
+                case CHEQUE:
+                    int nchequera=0;//ingresarlo de teclado
+                    banco.agregarCuenta( new CuentaCheques(nc,n,nchequera));
+                    break;
+                default:
+                    banco.agregarCuenta( new CuentaPlazoFija(nc, n));
+            }
+        }
+        catch(IllegalArgumentException e){
+            System.out.println("TIPO DE CUENTA INCORRECTO");
+        }
+        catch(DuplicateCodeException e){
+            System.out.println("Error: " + e.getMessage());
         }
     }
     

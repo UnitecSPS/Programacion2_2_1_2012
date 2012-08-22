@@ -19,7 +19,10 @@ public class BancoArraylist implements iBanco {
     }
     
     @Override
-    public void agregarCuenta(CuentaBancaria cb) {
+    public void agregarCuenta(CuentaBancaria cb)throws DuplicateCodeException {
+        CuentaBancaria c = getCuenta(cb.getCodigo());
+        if( c != null )
+            throw new DuplicateCodeException(cb.getCodigo());
         cuentas.add(cb);
     }
 

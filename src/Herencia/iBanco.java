@@ -16,8 +16,9 @@ public interface iBanco extends Imprimible {
     /**
      * Esta funcion es para agregar una cuenta
      * @param cb Cuenta Bancaria para agregar
+     * @throws DuplicateCodeException Por codigo duplicado
      */
-    void agregarCuenta(CuentaBancaria cb);
+    void agregarCuenta(CuentaBancaria cb)throws DuplicateCodeException;
     
     /**
      * Devuelve el OBJETO CuentaBancaria segun su codigo
