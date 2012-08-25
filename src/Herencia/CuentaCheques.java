@@ -28,7 +28,7 @@ public class CuentaCheques extends CuentaBancaria{
     }
     
     @Override
-    public boolean retiro(double m){
+    public boolean retiro(double m) throws NotEnoughMoneyException{
         Scanner lea = new Scanner(System.in);
         System.out.print("Num Cheque a cambiar: ");
         int nc = lea.nextInt();

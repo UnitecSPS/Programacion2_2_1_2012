@@ -48,12 +48,12 @@ public class CuentaBancaria {
         saldo += m;
     }
     
-    public boolean retiro(double m){
+    public boolean retiro(double m)throws NotEnoughMoneyException{
         if( saldo > m ){
             saldo -= m;
             return true;
         }
-        return false;
+        throw new NotEnoughMoneyException();
     }
     
     public void registrarIntereses(){

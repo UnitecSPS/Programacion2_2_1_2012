@@ -50,7 +50,12 @@ public class BancoArraylist implements iBanco {
     public boolean retiro(int codigo, double m) {
         CuentaBancaria cb = getCuenta(codigo);
         if( cb != null ){
-            return cb.retiro(m);
+            try{
+                return cb.retiro(m);
+            }
+            catch(Exception e){
+                System.out.println("Error: " + e.getMessage());
+            }
         }
         return false;
     }
