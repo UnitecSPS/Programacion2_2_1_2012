@@ -2,16 +2,16 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package ExaLab2;
+package Exa2;
 
 /**
  *
  * @author Gotcha
  */
-public class ArregloBoolean extends ArregloDinamico implements iOpciones{
+public class ArregloDouble extends ArregloDinamico implements iOpciones{
 
-    public ArregloBoolean(){
-        super("ss");
+    public ArregloDouble(){
+        super("do");
     }
     
     @Override

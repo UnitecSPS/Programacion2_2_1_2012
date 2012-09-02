@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package ExaLab2;
+package Exa2;
 
 import java.util.ArrayList;
 import java.util.Scanner;
