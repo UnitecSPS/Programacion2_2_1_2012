@@ -7,7 +7,7 @@ package Herencia;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-/**
+/**   
  *
  * @author Gotcha
  */ 

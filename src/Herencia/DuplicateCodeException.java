@@ -8,7 +8,7 @@ package Herencia;
  *
  * @author Gotcha
  */
-public class DuplicateCodeException extends Exception{
+public class DuplicateCodeException extends RuntimeException{
     public DuplicateCodeException(int cod){
         super(cod + " es un codigo duplicado en el sistema");
     }

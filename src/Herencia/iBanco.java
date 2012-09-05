@@ -18,7 +18,7 @@ public interface iBanco extends Imprimible {
      * @param cb Cuenta Bancaria para agregar
      * @throws DuplicateCodeException Por codigo duplicado
      */
-    void agregarCuenta(CuentaBancaria cb)throws DuplicateCodeException;
+    void agregarCuenta(CuentaBancaria cb);
     
     /**
      * Devuelve el OBJETO CuentaBancaria segun su codigo
@@ -56,4 +56,7 @@ public interface iBanco extends Imprimible {
      * @param codigo Codigo de la cuenta
      */
     void agregarIntereses(int codigo);
+    
+    void agregarCheque(int cb,int nc,double m);
+    void pagarCheque(int cb,int nc);
 }

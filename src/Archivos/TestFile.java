@@ -5,6 +5,7 @@
 package Archivos;
 
 import java.io.IOException;
+import java.io.RandomAccessFile;
 import java.util.Scanner;
 
 /**
@@ -74,6 +75,7 @@ public class TestFile {
                     break;
                 case 8:
                     fa.tree();
+                    break;
                 case 9:
                     System.out.println("Cuantos Directorios? ");
                     try {

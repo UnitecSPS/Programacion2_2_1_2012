@@ -19,7 +19,7 @@ public class BancoArraylist implements iBanco {
     }
     
     @Override
-    public void agregarCuenta(CuentaBancaria cb)throws DuplicateCodeException {
+    public void agregarCuenta(CuentaBancaria cb){
         CuentaBancaria c = getCuenta(cb.getCodigo());
         if( c != null )
             throw new DuplicateCodeException(cb.getCodigo());
@@ -96,6 +96,16 @@ public class BancoArraylist implements iBanco {
         CuentaBancaria  cb = getCuenta(codigo);
         if( cb != null )
             cb.registrarIntereses();
+    }
+
+    @Override
+    public void agregarCheque(int cb, int nc, double m) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public void pagarCheque(int cb, int nc) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
     
 }
