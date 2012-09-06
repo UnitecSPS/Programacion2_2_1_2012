@@ -4,6 +4,7 @@
  */
 package Herencia;
 
+import Archivos.BancoBinario;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
@@ -17,7 +18,7 @@ public class GotchaBank {
     static Scanner lea = new Scanner(System.in);
     
     static{
-        banco = new BancoArraylist();
+        banco = new BancoBinario();
     }
     
     public static void main(String args[]){

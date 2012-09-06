@@ -21,6 +21,10 @@ public class CuentaCheques extends CuentaBancaria{
         numChequera = nc;
         cheques = new ArrayList<Cheque>();
     }
+
+    public int getNumChequera() {
+        return numChequera;
+    }
     
     @Override
     public void patito(){
@@ -50,5 +54,10 @@ public class CuentaCheques extends CuentaBancaria{
         String cad = super.toString() + " Chequera: " + 
                 numChequera;
         return cad;
+    }
+    
+    @Override
+    public TipoCuenta getTipo(){
+        return TipoCuenta.CHEQUE;
     }
 }

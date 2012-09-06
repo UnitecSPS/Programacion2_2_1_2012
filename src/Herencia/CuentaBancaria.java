@@ -69,4 +69,8 @@ public class CuentaBancaria {
     public void patito(){
         System.out.println("PATITO BANCARIO");
     }
+    
+    public TipoCuenta getTipo(){
+        return TipoCuenta.AHORRO;
+    }
   }

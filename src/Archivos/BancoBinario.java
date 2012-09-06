@@ -7,6 +7,8 @@ package Archivos;
 import Exa2.NoSuchOptionException;
 import Exa2.iOpciones;
 import Herencia.CuentaBancaria;
+import Herencia.CuentaCheques;
+import Herencia.CuentaPlazoFija;
 import Herencia.DuplicateCodeException;
 import Herencia.TipoCuenta;
 import Herencia.iBanco;
@@ -98,8 +100,20 @@ public class BancoBinario implements iBanco, iOpciones{
     @Override
     public void agregarCuenta(CuentaBancaria cb){
         try{
-            if( buscarCuenta(cb.getCodigo() )){
-
+            if( !buscarCuenta(cb.getCodigo() )){
+                rCuentas.writeInt(cb.getCodigo());
+                rCuentas.writeUTF(cb.getTipo().toString());
+                rCuentas.writeUTF(cb.getNombre());
+                rCuentas.writeDouble(cb.getSaldo());
+                rCuentas.writeLong(cb.getFechaInicio().getTime());
+                
+                if(cb.getTipo() == TipoCuenta.PLAZOFIJO){
+                    rCuentas.writeLong( ((CuentaPlazoFija)cb).getFechaFin().getTime() );
+                    rCuentas.writeDouble(((CuentaPlazoFija)cb).getInteresGenerado());
+                }
+                else if( cb.getTipo() == TipoCuenta.CHEQUE){
+                    rCuentas.writeInt(((CuentaCheques)cb).getNumChequera());
+                }
             }
             else
                 throw new DuplicateCodeException(cb.getCodigo());
@@ -140,7 +154,36 @@ public class BancoBinario implements iBanco, iOpciones{
 
     @Override
     public void imprimir() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        try{
+            rCuentas.seek(0);
+            while(rCuentas.getFilePointer() < rCuentas.length() ){
+                int cod = rCuentas.readInt();
+                String tipo = rCuentas.readUTF();
+                String n = rCuentas.readUTF();
+                double sal = rCuentas.readDouble();
+                rCuentas.readLong();
+                
+                System.out.print(cod + "-" + n + "-" + tipo);
+                
+                if(tipo.equals("AHORRO"))
+                    System.out.println("");
+                else if(tipo.equals("CHEQUE")){
+                    System.out.println(" Chequera: " + 
+                            rCuentas.readInt());
+                    
+                }
+                else if(tipo.equals("PLAZOFIJO")){
+                    rCuentas.readLong();
+                    System.out.println(" Intereses: " +
+                            rCuentas.readDouble());
+                }
+                    
+                    
+                
+            }
+        }catch(IOException e){
+            System.out.println("Error: " + e.getMessage());
+        }
     }
 
     @Override

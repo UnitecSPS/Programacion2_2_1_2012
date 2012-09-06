@@ -20,6 +20,14 @@ public class CuentaPlazoFija extends CuentaBancaria {
         interesGenerado = 0;
         fechaFin = fechaInicio;
     }
+
+    public Date getFechaFin() {
+        return fechaFin;
+    }
+
+    public double getInteresGenerado() {
+        return interesGenerado;
+    }
     
     @Override
     public double tasaInteres(){
@@ -63,6 +71,11 @@ public class CuentaPlazoFija extends CuentaBancaria {
     @Override
     public String toString() {
         return super.toString() + " Intereses: " + interesGenerado;
+    }
+    
+    @Override
+    public TipoCuenta getTipo(){
+        return TipoCuenta.PLAZOFIJO;
     }
     
     
