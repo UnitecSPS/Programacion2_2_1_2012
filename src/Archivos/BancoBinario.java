@@ -11,9 +11,11 @@ import Herencia.CuentaCheques;
 import Herencia.CuentaPlazoFija;
 import Herencia.DuplicateCodeException;
 import Herencia.TipoCuenta;
+import Herencia.TipoTransaccion;
 import Herencia.iBanco;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.util.Date;
 
 /**
  *
@@ -97,6 +99,21 @@ public class BancoBinario implements iBanco, iOpciones{
         return false;
     }
     
+    /***
+     * Registrar una transaccion en el archivo log.bac
+     * @param cc Codigo de la cuenta bancaria
+     * @param t Tipo de la transaccion (DEPOSITO, RETIRO o INTERESES)
+     * @param m Monto de la transaccion
+     * @throws IOException 
+     */
+    private void registrarTransaccion(int cc,TipoTransaccion t,double m)throws IOException{
+        rLog.seek(rLog.length());
+        rLog.writeInt(cc);
+        rLog.writeUTF(t.toString());
+        rLog.writeLong(new Date().getTime());
+        rLog.writeDouble(m);
+    }
+    
     @Override
     public void agregarCuenta(CuentaBancaria cb){
         try{
@@ -129,7 +146,23 @@ public class BancoBinario implements iBanco, iOpciones{
 
     @Override
     public boolean deposito(int codigo, double m) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        try{
+            if( buscarCuenta(codigo) ){
+                //el puntero esta al inicio del tipo           
+                rCuentas.readUTF();
+                rCuentas.readUTF();
+                long pos = rCuentas.getFilePointer();
+                double sal = rCuentas.readDouble();
+                rCuentas.seek(pos);//rCuentas.seek(rCuentas.getFilePointer()-8);
+                rCuentas.writeDouble(sal + m);
+                
+                registrarTransaccion(codigo, TipoTransaccion.DEPOSITO, m);
+            }
+        }catch(IOException e){
+            System.out.println("Error: " + e.getMessage());
+        }
+        
+        return false;
     }
 
     @Override

@@ -4,9 +4,7 @@
  */
 package Herencia;
 
-import Archivos.BancoBinario;
-import java.util.ArrayList;
-import java.util.Date;
+import Archivos.BancoBinario;   
 import java.util.Scanner;
 
 /**
