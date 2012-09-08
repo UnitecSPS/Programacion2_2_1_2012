@@ -157,6 +157,7 @@ public class BancoBinario implements iBanco, iOpciones{
                 rCuentas.writeDouble(sal + m);
                 
                 registrarTransaccion(codigo, TipoTransaccion.DEPOSITO, m);
+                return true;
             }
         }catch(IOException e){
             System.out.println("Error: " + e.getMessage());
