@@ -99,12 +99,7 @@ public class BancoArraylist implements iBanco {
     }
 
     @Override
-    public void agregarCheque(int cb, int nc, double m) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public void pagarCheque(int cb, int nc) {
+    public void agregarCheque(int cc, double m, boolean c) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
     

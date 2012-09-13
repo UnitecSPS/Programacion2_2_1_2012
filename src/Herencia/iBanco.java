@@ -57,6 +57,5 @@ public interface iBanco extends Imprimible {
      */
     void agregarIntereses(int codigo);
     
-    void agregarCheque(int cb,int nc,double m);
-    void pagarCheque(int cb,int nc);
+    void agregarCheque(int cc, double m, boolean c);
 }

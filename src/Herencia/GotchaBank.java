@@ -5,6 +5,8 @@
 package Herencia;
 
 import Archivos.BancoBinario;   
+import Exa2.NoSuchOptionException;
+import Exa2.iOpciones;
 import java.util.Scanner;
 
 /**
@@ -30,7 +32,8 @@ public class GotchaBank {
             System.out.println("5- Configurar Fecha Fin");
             System.out.println("6- Registrar Intereses");
             System.out.println("7- Imprimir");
-            System.out.println("8- Salir");
+            System.out.println("8- Imprimir Opciones");
+            System.out.println("9- Salir");
             System.out.print("\nEscoja Opcion: ");
             op = lea.nextInt();
             
@@ -74,10 +77,12 @@ public class GotchaBank {
                 case 7:
                     banco.imprimir();
                     break;
-                    
+                case 8:
+                    imprimriOpciones();
+                    break;
                             
             }
-        }while(op!= 8);
+        }while(op!= 9);
     }
     
     public static void addCuenta(int nc,String n,String tip){
@@ -147,5 +152,18 @@ public class GotchaBank {
         System.out.print("Codigo: ");
         int cod = lea.nextInt();
         banco.agregarIntereses(cod);
+    }
+
+    private static void imprimriOpciones() {
+        if( banco instanceof iOpciones ){
+            ((iOpciones)banco).imprimirOpciones();
+            System.out.println("Escoja Opcion: ");
+            int op = lea.nextInt();
+            try{
+                ((iOpciones)banco).ejecutarOpcion(op);
+            }catch(NoSuchOptionException e){
+                System.out.println(e.getMessage());
+            }
+        }
     }
 }
