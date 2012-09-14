@@ -10,12 +10,27 @@ package Memoria;
  */
 public class TestMem {
     public static void main(String args[]){
-        Nodo noda = new Nodo("Carlos");
-        Nodo nodb = new Nodo("Jean");
-        noda.siguiente = nodb;
+        ListaEnlazada lista = new ListaEnlazada();
         
-        System.out.println("A: " + noda.nombre);
-        System.out.println("B: " + noda.siguiente.nombre);
+        lista.agregar(new Nodo("Carlos"));
+        lista.agregar(new Nodo("William"));
+        lista.agregar(new Nodo("Edwin"));
+        lista.agregar(new Nodo("Dennis"));
+        lista.agregar(new Nodo("Oscar"));
+        lista.agregar(new Nodo("Jean"));
+        
+        lista.listar();
+        
+        lista.borrar("Carlos");
+        System.out.println("\nLista Sin Carlos\n----");
+        lista.listar();
+        
+        lista.borrar("Dennis");
+        System.out.println("\nLista sin Dennis\n------");
+        lista.listar();
+        
+        System.out.println("\nBorrar uno que no existe\n----");
+        lista.borrar("Patito");
         
     }
 }
