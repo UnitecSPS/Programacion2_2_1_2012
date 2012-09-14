@@ -32,5 +32,17 @@ public class TestMem {
         System.out.println("\nBorrar uno que no existe\n----");
         lista.borrar("Patito");
         
+        if( lista.buscar("Jean"))
+            System.out.println("SE ENCONTRO JEAN!");
+        
+        if( !lista.buscar("Patito") )
+            System.out.println("NO SE ENCONTRO PATITO!");
+        
+        lista.agregarEnMedio("Jean",new Nodo("Angela"));
+        lista.agregarEnMedio("Edwin",new Nodo("Batman"));
+        lista.agregarEnMedio("Patito", new Nodo("Pollito"));
+        System.out.println("\nLista con agregados\n------");
+        lista.listar();
+        
     }
 }

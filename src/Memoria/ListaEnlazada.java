@@ -4,6 +4,9 @@
  */
 package Memoria;
 
+import java.io.IOException;
+import java.io.RandomAccessFile;
+
 /**
  *
  * @author Gotcha
@@ -73,6 +76,13 @@ public class ListaEnlazada {
      * @return TRUE si existe o no
      */
     public boolean buscar(String nombre){
+        Nodo tmp = raiz;
+        
+        while(tmp != null ){
+            if( tmp.nombre.equals(nombre))
+                return true;
+            tmp = tmp.siguiente;
+        }
         return false;
     }
     
@@ -85,7 +95,19 @@ public class ListaEnlazada {
      * @param obj El nodo para agregar
      */
     public void agregarEnMedio(String nombre,Nodo obj){
+        Nodo tmp = raiz;
         
+        while( tmp != null ){
+            if( tmp.nombre.equals(nombre) ){
+                //encontre el nodo que despues de el agregare
+                //el nuevo nodo
+                obj.siguiente = tmp.siguiente;
+                tmp.siguiente = obj;
+                break;
+            }
+            else
+                tmp = tmp.siguiente;
+        }
     }
     
     /**
@@ -96,6 +118,16 @@ public class ListaEnlazada {
      * @param textFile La direccion del archivo
      */
     public void recarga(String textFile){
+        raiz = null; //borro todo!
         
+        try{
+            RandomAccessFile ram = new RandomAccessFile(textFile,"rw");
+            
+            while( ram.getFilePointer() < ram.length() ){
+                agregar( new Nodo(ram.readUTF()) );
+            }
+        }catch(IOException e){
+            
+        }
     }
 }
